@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "WebFetch(domain:stripe.com)",
+      "WebFetch(domain:linear.app)",
+      "WebFetch(domain:docs.stripe.com)",
+      "WebSearch",
+      "WebFetch(domain:medium.com)",
+      "mcp__ide__getDiagnostics"
+    ]
+  },
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "context7",
+    "n8n-mcp",
+    "youtube-transcript",
+    "linear",
+    "linear-mcp-plus"
+  ]
+}

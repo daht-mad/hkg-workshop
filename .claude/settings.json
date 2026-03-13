@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(npx playwright install:*)",
+      "Bash(npm run slides:*)",
+      "Bash(npx tsx:*)",
+      "mcp__context7__resolve-library-id"
+    ]
+  }
+}
