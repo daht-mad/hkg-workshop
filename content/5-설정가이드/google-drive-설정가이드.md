@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Google Drive API 설정 가이드
 
 Google Drive 워크플로를 사용하기 위한 OAuth 설정 가이드입니다.

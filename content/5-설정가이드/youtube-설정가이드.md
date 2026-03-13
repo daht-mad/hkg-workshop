@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # YouTube API 설정 가이드
 
 YouTube 워크플로를 사용하기 위한 OAuth 설정 가이드입니다.

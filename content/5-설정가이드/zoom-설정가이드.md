@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Zoom API 설정 가이드
 
 Zoom 워크플로를 사용하기 위한 Server-to-Server OAuth 앱 설정 가이드입니다.

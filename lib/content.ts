@@ -10,6 +10,23 @@ export interface ContentNode {
   extension?: string;
 }
 
+/**
+ * 마크다운 파일의 frontmatter에서 hidden 여부 확인
+ * ---
+ * hidden: true
+ * ---
+ */
+function isFileHidden(filePath: string): boolean {
+  try {
+    const content = fs.readFileSync(filePath, "utf-8");
+    const fmMatch = content.match(/^---\s*\n([\s\S]*?)\n---/);
+    if (!fmMatch) return false;
+    return /^hidden:\s*true$/m.test(fmMatch[1]);
+  } catch {
+    return false;
+  }
+}
+
 const CONTENT_DIR = path.join(process.cwd(), "content");
 const EXCLUDED_FILES = ["CLAUDE.md"];
 const SUPPORTED_EXTENSIONS = [".md", ".pdf"];
@@ -107,6 +124,9 @@ export function getContentTree(dir: string = CONTENT_DIR, parentPath: string = "
         children,
       });
     } else if (entry.isFile() && isSupportedFile(entry.name)) {
+      // hidden: true인 파일은 트리에서 제외
+      if (entry.name.endsWith(".md") && isFileHidden(fullPath)) continue;
+
       const extension = path.extname(entry.name);
       const slug = generateSlug(entry.name, parentPath, "file");
       nodes.push({
@@ -119,7 +139,13 @@ export function getContentTree(dir: string = CONTENT_DIR, parentPath: string = "
     }
   }
 
-  return nodes.sort(sortFoldersFirstThenIndexFirst);
+  // 자식이 모두 hidden이면 폴더도 제거
+  const filtered = nodes.filter(n => {
+    if (n.type === "folder" && n.children && n.children.length === 0) return false;
+    return true;
+  });
+
+  return filtered.sort(sortFoldersFirstThenIndexFirst);
 }
 
 /**
@@ -204,9 +230,12 @@ export function getDocBySlug(slug: string[]): { filePath: string; exists: boolea
   const relativePath = realPathParts.join("/");
   const basePath = path.join(CONTENT_DIR, relativePath);
 
-  // 파일 찾기
+  // 파일 찾기 (hidden 파일은 접근 차단)
   const mdPath = tryFindFile(CONTENT_DIR, `${relativePath}.md`);
-  if (mdPath) return { filePath: mdPath, exists: true, isPdf: false };
+  if (mdPath) {
+    if (isFileHidden(mdPath)) return { filePath: "", exists: false, isPdf: false };
+    return { filePath: mdPath, exists: true, isPdf: false };
+  }
 
   const pdfPath = tryFindFile(CONTENT_DIR, `${relativePath}.pdf`);
   if (pdfPath) return { filePath: pdfPath, exists: true, isPdf: true };

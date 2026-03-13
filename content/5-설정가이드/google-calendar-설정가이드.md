@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Google Calendar MCP 설정 가이드
 
 Google Calendar MCP를 설치하면 Claude가 캘린더 일정을 조회/생성/수정할 수 있습니다.

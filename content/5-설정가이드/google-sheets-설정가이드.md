@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Google Sheets 연동 가이드
 
 > Claude Code가 내 Google Sheets를 읽고 쓸 수 있도록 "로봇 계정"을 만드는 가이드입니다.

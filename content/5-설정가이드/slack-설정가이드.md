@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # Slack API 설정 가이드
 
 Slack 워크플로를 사용하기 위한 Bot 설정 가이드입니다.

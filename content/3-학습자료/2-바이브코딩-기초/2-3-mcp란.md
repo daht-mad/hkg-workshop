@@ -1,3 +1,7 @@
+---
+hidden: true
+---
+
 # 2.3 MCP란?
 
 > Model Context Protocol - AI용 USB-C 포트
