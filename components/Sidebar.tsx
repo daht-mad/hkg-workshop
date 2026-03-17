@@ -58,7 +58,7 @@ function TreeNode({ node, depth = 0, parentSlug = "" }: { node: ContentNode; dep
   const [isOpen, setIsOpen] = useState(isCurrentPathInFolder);
 
   const isFolder = node.type === "folder";
-  const isActive = pathname === href || pathname.startsWith(`${href}/`);
+  const isActive = pathname === href;
 
   const paddingLeft = depth === 0 ? undefined : `${depth * 1.25 + 0.75}rem`;
 
