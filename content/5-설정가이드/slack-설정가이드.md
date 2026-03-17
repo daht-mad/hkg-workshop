@@ -1,6 +1,3 @@
----
-hidden: false
----
 
 # Slack API 설정 가이드
 
@@ -8,21 +5,6 @@ Slack 워크플로를 사용하기 위한 Bot 설정 가이드입니다.
 
 > **참고**: 이 가이드는 [Slack API 공식 문서](https://api.slack.com/)와 [Python Slack SDK](https://github.com/slackapi/python-slack-sdk) 문서를 기반으로 작성되었습니다.
 
----
-
-## 1. Slack App 생성
-
-1. [Slack API 페이지](https://api.slack.com/apps) 접속
-2. 우측 상단 **Create New App** 클릭
-3. **From scratch** 선택
-4. 앱 정보 입력:
-   - **App Name**: 원하는 이름 (예: "워크플로 봇")
-   - **Workspace**: 사용할 워크스페이스 선택
-5. **Create App** 클릭
-6. 좌측 메뉴에서 **App Home** 클릭
-7. **App Display Name** 섹션에서 **Edit** 클릭 후 이름 설정 (이 설정이 완료되어야 봇의 이름이 제대로 표시됩니다)
-
----
 
 ## 2. Bot Token Scopes 설정
 
@@ -38,17 +20,6 @@ Slack 워크플로를 사용하기 위한 Bot 설정 가이드입니다.
 
 > **Tip**: `chat:write.public` 권한이 있으면 봇을 채널에 초대하지 않아도 공개 채널에 메시지를 보낼 수 있습니다.
 
----
-
-## 3. 워크스페이스에 앱 설치
-
-1. 좌측 메뉴에서 **OAuth & Permissions** 클릭
-2. 상단의 **Install to Workspace** 버튼 클릭
-3. 권한 확인 후 **허용** 클릭
-4. 설치 완료 후 **Bot User OAuth Token** 복사
-   - `xoxb-`로 시작하는 토큰
-
----
 
 ## 4. 환경변수 설정
 
@@ -60,17 +31,6 @@ SLACK_BOT_TOKEN=xoxb-your-bot-token-here
 
 > **주의**: 토큰은 `xoxb-`로 시작해야 합니다. `xoxp-`로 시작하는 User Token이 아닌 Bot Token을 사용하세요.
 
----
-
-## 5. (선택) 비공개 채널에 봇 추가
-
-`chat:write.public` 권한으로 공개 채널에는 바로 메시지를 보낼 수 있지만, **비공개 채널**에 메시지를 보내려면 봇을 해당 채널에 추가해야 합니다:
-
-1. Slack에서 해당 비공개 채널로 이동
-2. 채널 이름 클릭 → **통합** 탭
-3. **앱 추가** → 생성한 봇 선택
-
----
 
 ## 설정 완료 체크리스트
 
@@ -80,21 +40,6 @@ SLACK_BOT_TOKEN=xoxb-your-bot-token-here
 - [ ] Bot User OAuth Token 복사 (`xoxb-`로 시작)
 - [ ] `.env` 파일에 `SLACK_BOT_TOKEN` 추가
 
----
-
-## 토큰 검증 방법
-
-토큰이 올바르게 설정되었는지 확인하려면:
-
-```python
-from slack_sdk import WebClient
-
-client = WebClient(token="xoxb-YOUR-BOT-TOKEN")
-response = client.auth_test()
-print(f"Bot User ID: {response['user_id']}")
-```
-
----
 
 ## 문제 해결
 
@@ -104,8 +49,3 @@ print(f"Bot User ID: {response['user_id']}")
 | `channel_not_found` | 채널이 없거나 접근 불가 | 채널명 확인, 비공개 채널이면 봇 추가 |
 | `not_in_channel` | 봇이 채널에 없음 | 채널에 봇 추가 또는 `chat:write.public` 권한 확인 |
 
----
-
-## 설정 완료 후
-
-위 설정을 모두 완료하셨으면 Claude Code에게 알려주세요!
