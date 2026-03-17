@@ -93,10 +93,10 @@ function generateSlug(name: string, parentPath: string, type: "file" | "folder")
     }
   }
 
-  // 숫자 prefix 추출 (예: "1-워크숍-사전-가이드" → "1")
-  const match = nameWithoutExt.match(/^(\d+)-/);
-  if (match) {
-    return match[1];
+  // 숫자 prefix 추출 (예: "1-1-스킬이란" → "1-1", "1-워크숍" → "1")
+  const multiMatch = nameWithoutExt.match(/^(\d+(?:-\d+)*)-/);
+  if (multiMatch) {
+    return multiMatch[1];
   }
 
   // 그 외는 그대로
