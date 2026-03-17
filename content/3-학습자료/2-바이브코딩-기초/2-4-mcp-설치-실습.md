@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # 2.4 실습: MCP 설치하고 확인하기

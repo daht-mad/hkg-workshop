@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # Google Drive API 설정 가이드

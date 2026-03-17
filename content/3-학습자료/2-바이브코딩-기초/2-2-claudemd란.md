@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # 2.2 CLAUDE.md란?

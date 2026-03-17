@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # YouTube API 설정 가이드

@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # Google Sheets 연동 가이드

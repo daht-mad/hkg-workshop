@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # Google Calendar MCP 설정 가이드

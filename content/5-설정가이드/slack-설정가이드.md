@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # Slack API 설정 가이드

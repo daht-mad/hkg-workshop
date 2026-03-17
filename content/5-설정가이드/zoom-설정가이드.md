@@ -1,5 +1,5 @@
 ---
-hidden: true
+hidden: false
 ---
 
 # Zoom API 설정 가이드
